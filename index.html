@@ -74,7 +74,7 @@ a{color:inherit;text-decoration:none}
 .hero-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center;filter:brightness(.55) saturate(1.1)}
 .hero-inner{max-width:720px;position:relative;z-index:2;animation:rise .55s ease both}
 .hero h1{font-size:clamp(28px,5vw,52px);line-height:1.05;letter-spacing:-1.6px;font-weight:800;margin-bottom:14px;text-shadow:0 6px 30px rgba(0,0,0,.8)}
-.hero p{color:#b6bdd1;font-size:16px;line-height:1.65;margin-bottom:24px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;max-width:600px}
+.hero p{color:#b6bdd1;font-size:16px;line-height:1.65;margin-bottom:24px;display:-webkit-box;display:-webkit-box;line-clamp:3;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;max-width:600px}
 .hero-meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:14px;color:#c3c9dc;margin-bottom:14px}
 .hero-meta .star{color:#fbbf24}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
@@ -98,7 +98,7 @@ a{color:inherit;text-decoration:none}
 .g-chip.active{background:linear-gradient(135deg,var(--accent),rgba(124,92,255,.6));color:#fff;border-color:transparent;box-shadow:0 6px 18px -8px var(--accent)}
 .sort-select{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:7px 12px;border-radius:20px;font-size:13px;outline:none;cursor:pointer}
 
-/* ── MY FAVORITES TABS (matches screenshot) ── */
+/* ── MY FAVORITES TABS ── */
 .fav-tabs {
   display: flex;
   gap: 6px;
@@ -138,6 +138,67 @@ a{color:inherit;text-decoration:none}
   background: rgba(255,255,255,0.06);
 }
 
+/* ── ANIME LANGUAGE TABS ── */
+.anime-lang-tabs {
+  display: flex;
+  gap: 6px;
+  background: #12141f;
+  padding: 6px;
+  border-radius: 30px;
+  margin-bottom: 16px;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  scrollbar-width: none;
+}
+.anime-lang-tabs::-webkit-scrollbar { display: none; }
+.anime-lang-tab {
+  padding: 9px 18px;
+  border-radius: 22px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  white-space: nowrap;
+  transition: .2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.anime-lang-tab.active {
+  background: #fff;
+  color: #07080d;
+  box-shadow: 0 4px 12px rgba(0,0,0,.4);
+}
+.anime-lang-tab:hover:not(.active) {
+  color: var(--text);
+  background: rgba(255,255,255,.06);
+}
+.ep-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  margin-top: 14px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.ep-input {
+  width: 70px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  color: var(--text);
+  text-align: center;
+  outline: none;
+  font-weight: 700;
+}
+
 .grid{display:grid;gap:20px 16px;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));padding-bottom:30px}
 .card{cursor:pointer;animation:rise .4s ease both}
 .card .poster{position:relative;aspect-ratio:2/3;border-radius:var(--radius);overflow:hidden;background:radial-gradient(120% 90% at 20% 0%,hsl(var(--h) 72% 34%),transparent 62%),linear-gradient(165deg,hsl(var(--h) 60% 18%),hsl(calc(var(--h) + 55) 55% 9%) 55%,#05060a);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:14px;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s}
@@ -162,6 +223,7 @@ a{color:inherit;text-decoration:none}
 .badge.playable::before{content:"▶";font-size:9px;margin-right:2px}
 .badge.rating{left:auto;right:11px;background:rgba(0,0,0,.75);color:#fbbf24}
 .badge.live{background:linear-gradient(135deg,#dc2626,#991b1b);border-color:transparent}
+.badge.indian{background:linear-gradient(135deg,#ff9933,#138808);border-color:transparent}
 
 .card-info{padding:9px 3px 0}
 .card-info h3{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -535,6 +597,7 @@ body:not(.admin-mode) #adminEditModal{display:none !important}
   <button data-cat="anime">🌸 Anime</button>
   <button data-cat="manga">📖 Manga</button>
   <button data-cat="novel">📕 Novels</button>
+  <button data-cat="indian">🇮🇳 Indian</button>
   <button data-cat="mine">⭐ My Library</button>
 </nav>
 
@@ -582,6 +645,7 @@ body:not(.admin-mode) #adminEditModal{display:none !important}
     <div><h5>Browse</h5><ul>
       <li data-goto="movie">Movies</li><li data-goto="tv">TV Shows</li>
       <li data-goto="anime">Anime</li><li data-goto="manga">Manga</li>
+      <li data-goto="indian">Indian</li>
     </ul></div>
     <div><h5>Read</h5><ul>
       <li data-goto="novel">Novels</li><li data-goto="mine">My Library</li>
@@ -600,6 +664,7 @@ body:not(.admin-mode) #adminEditModal{display:none !important}
   <button class="bn-item" data-cat="anime"><span class="ic">🌸</span> Anime</button>
   <button class="bn-item" data-cat="manga"><span class="ic">📖</span> Manga</button>
   <button class="bn-item" data-cat="novel"><span class="ic">📕</span> Novels</button>
+  <button class="bn-item" data-cat="indian"><span class="ic">🇮🇳</span> Indian</button>
   <button class="bn-item" data-cat="mine"><span class="ic">⭐</span> Mine</button>
 </div></nav>
 
@@ -619,6 +684,7 @@ body:not(.admin-mode) #adminEditModal{display:none !important}
     <button class="sf-chip" data-sf="anime">🌸 Anime</button>
     <button class="sf-chip" data-sf="manga">📖 Manga</button>
     <button class="sf-chip" data-sf="novel">📕 Novels</button>
+    <button class="sf-chip" data-sf="indian">🇮🇳 Indian</button>
   </div>
   <div class="search-results" id="searchResults"></div>
 </div></div>
@@ -637,12 +703,13 @@ body:not(.admin-mode) #adminEditModal{display:none !important}
       <div id="tmdbKeyUserNote" class="source-note" style="display:none;margin:0 0 14px 0"></div>
       <div style="margin:18px 0 12px;font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)">Metadata Sources</div>
       <div class="source-status"><span class="dot" id="dot-tmdb"></span><span class="name">TMDB</span><span class="info" id="info-tmdb">Movies &amp; TV</span></div>
-      <div class="source-status"><span class="dot"></span><span class="name">Jikan</span><span class="info">Anime · no key</span></div>
-      <div class="source-status"><span class="dot"></span><span class="name">AniList</span><span class="info">Manga · no key</span></div>
+      <div class="source-status"><span class="dot"></span><span class="name">AniList</span><span class="info">Anime + Manga · no key</span></div>
       <div class="source-status"><span class="dot"></span><span class="name">Open Library</span><span class="info">Novels · no key</span></div>
       <div class="source-status"><span class="dot"></span><span class="name">Gutenberg</span><span class="info">Full-text novels</span></div>
       <div style="margin:18px 0 12px;font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)">Default Streaming Server</div>
       <div id="serverPrefList" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"></div>
+      <div style="margin:18px 0 12px;font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)">Default Anime Language</div>
+      <div id="animeLangPrefList" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"></div>
       <div style="margin:18px 0 12px;font-size:11.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted)">Manga Reader</div>
       <div id="mangaServerPrefList" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px"></div>
       <div style="display:flex;gap:10px;margin-top:20px">
@@ -864,6 +931,19 @@ const Store = (() => {
 })();
 
 /* =========================================================
+   FETCH WITH TIMEOUT  (prevents long hangs)
+   ========================================================= */
+async function fetchWithTimeout(url, options = {}, ms = 6000){
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms);
+  try {
+    return await fetch(url, { ...options, signal: ctrl.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+/* =========================================================
    STREAM SERVERS (video)
    ========================================================= */
 const STREAM_SERVERS = [
@@ -898,7 +978,40 @@ const STREAM_SERVERS = [
 let currentStreamServer = Store.get('nexus_stream_server', 'vidsrc_to');
 
 /* =========================================================
-   MANGA — AniList + MangaDex (in-app reader via CORS proxy)
+   ANIME LANGUAGE SERVERS  (2Anime = primary for all 3)
+   ========================================================= */
+const ANIME_SERVERS = [
+  /* ── 🇯🇵 Sub (Original Japanese) ── */
+  { id:'ani_sub_2anime', name:'2Anime · Sub', flag:'🇯🇵', lang:'sub',
+    url:(slug, ep)=>`https://2anime.xyz/embed/${slug}-episode-${ep}` },
+  { id:'ani_sub_aniwatch', name:'AniWatch · Sub', flag:'🌐', lang:'sub',
+    url:(slug, ep)=>`https://aniwatchtv.to/watch/${slug}?ep=${ep}` },
+  { id:'ani_sub_animekai', name:'AnimeKai · Sub', flag:'🌸', lang:'sub',
+    url:(slug, ep)=>`https://animekai.to/watch/${slug}?ep=${ep}` },
+  { id:'ani_sub_gogo', name:'GogoAnime · Sub', flag:'💠', lang:'sub',
+    url:(slug, ep)=>`https://anitaku.to/${slug}-episode-${ep}` },
+
+  /* ── 🇬🇧 English Dub ── */
+  { id:'ani_dub_2anime', name:'2Anime · EN Dub', flag:'🇬🇧', lang:'dub-en',
+    url:(slug, ep)=>`https://2anime.xyz/embed/${slug}-dub-episode-${ep}` },
+  { id:'ani_dub_aniwatch', name:'AniWatch · EN Dub', flag:'🌐', lang:'dub-en',
+    url:(slug, ep)=>`https://aniwatchtv.to/watch/${slug}?ep=${ep}&dub=true` },
+  { id:'ani_dub_animekai', name:'AnimeKai · EN Dub', flag:'🌸', lang:'dub-en',
+    url:(slug, ep)=>`https://animekai.to/watch/${slug}?ep=${ep}&dub=true` },
+
+  /* ── 🇮🇳 Hindi Dub ── */
+  { id:'ani_hindi_2anime', name:'2Anime · Hindi', flag:'🇮🇳', lang:'dub-hi',
+    url:(slug, ep)=>`https://2anime.xyz/embed/${slug}-hindi-episode-${ep}` },
+  { id:'ani_hindi_aniwatch', name:'AniWatch · Hindi', flag:'🌐', lang:'dub-hi',
+    url:(slug, ep)=>`https://aniwatchtv.to/watch/${slug}?ep=${ep}&lang=hindi` },
+  { id:'ani_hindi_animehindi', name:'AnimeHindi', flag:'🇮🇳', lang:'dub-hi',
+    url:(slug, ep)=>`https://animehindi.in/watch/${slug}-episode-${ep}` }
+];
+let currentAnimeLang = Store.get('nexus_anime_lang', 'sub');
+let currentAnimeServer = Store.get('nexus_anime_server', 'ani_sub_2anime');
+
+/* =========================================================
+   MANGA — MangaDex via CORS proxies
    ========================================================= */
 const MANGA_SERVERS = [
   { id:'mangadex', name:'MangaDex', flag:'🌐', note:'In-app reader · CORS proxy' }
@@ -928,11 +1041,11 @@ async function proxyJson(url){
 
 const MangaAPI = {
   async _graphql(query, variables = {}){
-    const r = await fetch('https://graphql.anilist.co', {
+    const r = await fetchWithTimeout('https://graphql.anilist.co', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ query, variables })
-    });
+    }, 8000);
     if (!r.ok) throw new Error('AniList ' + r.status);
     const data = await r.json();
     if (data.errors && data.errors.length) throw new Error(data.errors[0].message);
@@ -1196,6 +1309,103 @@ function recordWatch(itemId, progress = 0){
 }
 
 /* =========================================================
+   FALLBACK CATALOG (offline / API-blocked)
+   ========================================================= */
+const FALLBACK_CATALOG = [
+  { id:'fb_m1', type:'movie', title:'Inception', year:2010, rating:8.4, hue:210, len:'2h 28m',
+    genres:['Action','Sci-Fi','Thriller'],
+    desc:'A thief who steals corporate secrets through dream-sharing technology is given the inverse task.',
+    poster:'https://image.tmdb.org/t/p/w500/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg', sourceId:27205, source:'tmdb' },
+  { id:'fb_m2', type:'movie', title:'The Dark Knight', year:2008, rating:8.5, hue:220, len:'2h 32m',
+    genres:['Action','Crime','Drama'],
+    desc:'Batman faces the Joker, a criminal mastermind who plunges Gotham into chaos.',
+    poster:'https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg', sourceId:155, source:'tmdb' },
+  { id:'fb_m3', type:'movie', title:'Interstellar', year:2014, rating:8.4, hue:200, len:'2h 49m',
+    genres:['Adventure','Drama','Sci-Fi'],
+    desc:'A team of explorers travel through a wormhole in search of a new home for humanity.',
+    poster:'https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg', sourceId:157336, source:'tmdb' },
+  { id:'fb_m4', type:'movie', title:'Dune: Part Two', year:2024, rating:8.2, hue:35, len:'2h 46m',
+    genres:['Adventure','Sci-Fi'],
+    desc:'Paul Atreides unites with the Fremen to wage war against the Harkonnen.',
+    poster:'https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg', sourceId:693134, source:'tmdb' },
+  { id:'fb_m5', type:'movie', title:'Oppenheimer', year:2023, rating:8.1, hue:15, len:'3h 0m',
+    genres:['Drama','History'],
+    desc:'The story of J. Robert Oppenheimer and his role in the atomic bomb.',
+    poster:'https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg', sourceId:872585, source:'tmdb' },
+  { id:'fb_m6', type:'movie', title:'Spirited Away', year:2001, rating:8.6, hue:290, len:'2h 5m',
+    genres:['Animation','Adventure','Fantasy'],
+    desc:'A girl wanders into a world ruled by gods, witches, and spirits.',
+    poster:'https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg', sourceId:129, source:'tmdb' },
+
+  { id:'fb_t1', type:'tv', title:'Breaking Bad', year:2008, rating:8.9, hue:75, len:'5 seasons',
+    genres:['Crime','Drama','Thriller'],
+    desc:'A chemistry teacher turns to cooking meth after a cancer diagnosis.',
+    poster:'https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg', sourceId:1396, source:'tmdb' },
+  { id:'fb_t2', type:'tv', title:'Stranger Things', year:2016, rating:8.6, hue:0, len:'4 seasons',
+    genres:['Drama','Fantasy','Horror'],
+    desc:'Kids in a small town uncover a mystery involving secret experiments.',
+    poster:'https://image.tmdb.org/t/p/w500/49WJfeN0moxb9IPfGn8AIqMGskD.jpg', sourceId:66732, source:'tmdb' },
+  { id:'fb_t3', type:'tv', title:'Game of Thrones', year:2011, rating:8.4, hue:30, len:'8 seasons',
+    genres:['Drama','Fantasy','Adventure'],
+    desc:'Noble families vie for control of the Iron Throne of Westeros.',
+    poster:'https://image.tmdb.org/t/p/w500/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg', sourceId:1399, source:'tmdb' },
+  { id:'fb_t4', type:'tv', title:'The Last of Us', year:2023, rating:8.7, hue:150, len:'1 season',
+    genres:['Drama','Sci-Fi'],
+    desc:'Joel and Ellie traverse a post-apocalyptic America.',
+    poster:'https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg', sourceId:100088, source:'tmdb' },
+
+  { id:'fb_a1', type:'anime', title:'Attack on Titan', year:2013, rating:9.0, hue:20, len:'87 eps', episodes:87,
+    genres:['Action','Drama','Fantasy'],
+    desc:'Humanity fights for survival against giant humanoid Titans.',
+    poster:'https://cdn.myanimelist.net/images/anime/10/47347.jpg', sourceId:16498, source:'anilist' },
+  { id:'fb_a2', type:'anime', title:'Death Note', year:2006, rating:8.6, hue:0, len:'37 eps', episodes:37,
+    genres:['Mystery','Psychological','Supernatural'],
+    desc:'A student finds a notebook that kills anyone whose name is written in it.',
+    poster:'https://cdn.myanimelist.net/images/anime/9/9453.jpg', sourceId:1535, source:'anilist' },
+  { id:'fb_a3', type:'anime', title:'Fullmetal Alchemist: Brotherhood', year:2009, rating:9.1, hue:35, len:'64 eps', episodes:64,
+    genres:['Action','Adventure','Drama'],
+    desc:'Two brothers search for the Philosopher\'s Stone to restore their bodies.',
+    poster:'https://cdn.myanimelist.net/images/anime/1208/94745.jpg', sourceId:5114, source:'anilist' },
+  { id:'fb_a4', type:'anime', title:'Demon Slayer', year:2019, rating:8.5, hue:340, len:'55 eps', episodes:55,
+    genres:['Action','Supernatural'],
+    desc:'Tanjiro becomes a demon slayer after his family is slaughtered.',
+    poster:'https://cdn.myanimelist.net/images/anime/1286/99889.jpg', sourceId:38000, source:'anilist' },
+  { id:'fb_a5', type:'anime', title:'One Piece', year:1999, rating:8.7, hue:30, len:'1100+ eps', episodes:100,
+    genres:['Action','Adventure','Comedy'],
+    desc:'Monkey D. Luffy searches for the legendary treasure One Piece.',
+    poster:'https://cdn.myanimelist.net/images/anime/6/73245.jpg', sourceId:21, source:'anilist' },
+  { id:'fb_a6', type:'anime', title:'Jujutsu Kaisen', year:2020, rating:8.6, hue:260, len:'47 eps', episodes:47,
+    genres:['Action','Supernatural'],
+    desc:'Yuji Itadori joins a secret organization to fight curses.',
+    poster:'https://cdn.myanimelist.net/images/anime/1171/109222.jpg', sourceId:40748, source:'anilist' },
+
+  { id:'fb_i1', type:'movie', title:'3 Idiots', year:2009, rating:8.4, hue:45, len:'2h 50m',
+    genres:['Comedy','Drama'], originCountry:'IN', originalLanguage:'hi', lang:'Hindi',
+    desc:'Two friends search for their long-lost companion and revisit college memories.',
+    poster:'https://image.tmdb.org/t/p/w500/66A9MqXOyVFCssoloscw79z8Tew.jpg', sourceId:20453, source:'tmdb' },
+  { id:'fb_i2', type:'movie', title:'Dangal', year:2016, rating:8.4, hue:35, len:'2h 41m',
+    genres:['Action','Biography','Drama'], originCountry:'IN', originalLanguage:'hi', lang:'Hindi',
+    desc:'A former wrestler trains his daughters to become world-class wrestlers.',
+    poster:'https://image.tmdb.org/t/p/w500/lWnb9Yb2wJmB8OyTGWKuFxvJLvT.jpg', sourceId:360814, source:'tmdb' },
+  { id:'fb_i3', type:'movie', title:'RRR', year:2022, rating:7.8, hue:15, len:'3h 7m',
+    genres:['Action','Drama'], originCountry:'IN', originalLanguage:'te', lang:'Hindi',
+    desc:'A fearless revolutionary and an officer in the British force journey together.',
+    poster:'https://image.tmdb.org/t/p/w500/nEufeZlyAOLqO2brrs0yeF1lgXO.jpg', sourceId:579974, source:'tmdb' },
+  { id:'fb_i4', type:'movie', title:'Lagaan', year:2001, rating:8.1, hue:40, len:'3h 44m',
+    genres:['Drama','Musical'], originCountry:'IN', originalLanguage:'hi', lang:'Hindi',
+    desc:'Villagers bet their taxes in a cricket match against British officers.',
+    poster:'https://image.tmdb.org/t/p/w500/yDO9lDGRsYDbtzWmTVbtYUmLcOS.jpg', sourceId:19666, source:'tmdb' },
+  { id:'fb_i5', type:'tv', title:'Sacred Games', year:2018, rating:8.5, hue:0, len:'2 seasons',
+    genres:['Crime','Drama'], originCountry:'IN', originalLanguage:'hi', lang:'Hindi',
+    desc:'A Mumbai cop receives a tip about a gangster planning a catastrophic attack.',
+    poster:'https://image.tmdb.org/t/p/w500/5d5mRzoHfAFvmQ85xRDcm9mX4HZ.jpg', sourceId:79501, source:'tmdb' },
+  { id:'fb_i6', type:'tv', title:'Mirzapur', year:2018, rating:8.4, hue:20, len:'3 seasons',
+    genres:['Crime','Drama'], originCountry:'IN', originalLanguage:'hi', lang:'Hindi',
+    desc:'The iron-fisted ruler of Mirzapur faces challenges to his throne.',
+    poster:'https://image.tmdb.org/t/p/w500/qU12Rb1YBTW8iF9ZrFh8DVmxKpG.jpg', sourceId:83320, source:'tmdb' }
+];
+
+/* =========================================================
    CATALOG
    ========================================================= */
 const CATALOG_KEY = 'nexus_catalog_v4';
@@ -1274,6 +1484,9 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const typeOf = i => TYPES[i.type] || { label:'?', icon:'❓', verb:'Open' };
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const isHindi = i => i.lang === 'Hindi' || (i.genres || []).some(g => /hindi/i.test(g));
+const isIndian = i => i.originCountry === 'IN' ||
+  ['hi','ta','te','kn','ml','bn','mr','pa','gu'].includes(i.originalLanguage) ||
+  (i.genres || []).some(g => /bollywood|hindi|tamil|telugu|kannada|malayalam/i.test(g));
 const isPlayable = i => !!(i.videoUrl || i.archiveId);
 const hueFromString = s => { let h = 0; for (let i = 0; i < s.length; i++) h = (h*31 + s.charCodeAt(i)) % 360; return h; };
 const detectMangaType = (item) => {
@@ -1282,6 +1495,12 @@ const detectMangaType = (item) => {
   if (g.some(x => /manhua|chinese/.test(x))) return 'manhua';
   return 'manga';
 };
+const makeSlug = (title) => String(title || 'anime')
+  .toLowerCase()
+  .replace(/[^a-z0-9\s-]/g, '')
+  .trim()
+  .replace(/\s+/g, '-')
+  .replace(/-+/g, '-');
 
 function initials(name){
   const p = String(name || '?').trim().split(/\s+/);
@@ -1318,6 +1537,84 @@ function setError(where, msg, kind = 'error'){
 }
 
 /* =========================================================
+   ANILIST ANIME FETCHERS  (replaces Jikan — more reliable)
+   ========================================================= */
+const AniListAPI = {
+  async graphql(query, variables = {}){
+    const r = await fetchWithTimeout('https://graphql.anilist.co', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ query, variables })
+    }, 6000);
+    if (!r.ok) throw new Error('AniList ' + r.status);
+    const data = await r.json();
+    if (data.errors && data.errors.length) throw new Error(data.errors[0].message);
+    return data.data;
+  },
+
+  norm(m){
+    const title = m.title?.english || m.title?.romaji || m.title?.native || 'Untitled';
+    return {
+      id: 'anilist_anime_' + m.id,
+      source: 'anilist', sourceId: m.id, type: 'anime', title,
+      year: m.startDate?.year || '—',
+      rating: m.averageScore ? Math.round(m.averageScore) / 10 : 0,
+      desc: String(m.description || 'No description available.').replace(/<[^>]*>/g, '').slice(0, 400),
+      poster: m.coverImage?.large || m.coverImage?.medium || null,
+      backdrop: m.bannerImage || null,
+      genres: (m.genres || []).slice(0, 8),
+      len: m.episodes ? `${m.episodes} eps` : '—',
+      episodes: m.episodes || 12,
+      hue: hueFromString(title)
+    };
+  },
+
+  async popular(page = 1){
+    const query = `
+      query($page: Int) {
+        Page(page: $page, perPage: 24) {
+          media(type: ANIME, sort: POPULARITY_DESC) {
+            id
+            title { romaji english native }
+            coverImage { large medium }
+            bannerImage
+            description
+            episodes
+            averageScore
+            startDate { year }
+            genres
+            siteUrl
+          }
+        }
+      }`;
+    const data = await this.graphql(query, { page });
+    return (data.Page?.media || []).map(m => this.norm(m));
+  },
+
+  async search(q){
+    const query = `
+      query($search: String) {
+        Page(page: 1, perPage: 24) {
+          media(type: ANIME, search: $search) {
+            id
+            title { romaji english native }
+            coverImage { large medium }
+            bannerImage
+            description
+            episodes
+            averageScore
+            startDate { year }
+            genres
+            siteUrl
+          }
+        }
+      }`;
+    const data = await this.graphql(query, { search: q });
+    return (data.Page?.media || []).map(m => this.norm(m));
+  }
+};
+
+/* =========================================================
    API LAYER
    ========================================================= */
 const API = {
@@ -1327,7 +1624,7 @@ const API = {
     const url = new URL('https://api.themoviedb.org/3' + path);
     url.searchParams.set('api_key', key);
     for (const [k, v] of Object.entries(params)) url.searchParams.set(k, v);
-    const r = await fetch(url);
+    const r = await fetchWithTimeout(url, {}, 6000);
     if (!r.ok){
       if (r.status === 401) throw new Error('Invalid TMDB API key');
       throw new Error('TMDB: ' + r.status);
@@ -1345,6 +1642,30 @@ const API = {
     const key = 'tmdb_tv_' + page;
     const c = APICache.get(key); if (c) return c;
     const data = await this.tmdb('/tv/popular', { page });
+    const items = (data.results || []).map(m => this.normTMDB(m, 'tv'));
+    APICache.set(key, items); return items;
+  },
+  async tmdbIndianMovies(page = 1){
+    const key = 'tmdb_indian_movies_' + page;
+    const c = APICache.get(key); if (c) return c;
+    const data = await this.tmdb('/discover/movie', {
+      page,
+      with_origin_country: 'IN',
+      sort_by: 'popularity.desc',
+      'vote_count.gte': 50
+    });
+    const items = (data.results || []).map(m => this.normTMDB(m, 'movie'));
+    APICache.set(key, items); return items;
+  },
+  async tmdbIndianTV(page = 1){
+    const key = 'tmdb_indian_tv_' + page;
+    const c = APICache.get(key); if (c) return c;
+    const data = await this.tmdb('/discover/tv', {
+      page,
+      with_origin_country: 'IN',
+      sort_by: 'popularity.desc',
+      'vote_count.gte': 20
+    });
     const items = (data.results || []).map(m => this.normTMDB(m, 'tv'));
     APICache.set(key, items); return items;
   },
@@ -1366,7 +1687,9 @@ const API = {
       desc: r.overview || 'No description available.',
       poster: r.poster_path ? 'https://image.tmdb.org/t/p/w500' + r.poster_path : null,
       backdrop: r.backdrop_path ? 'https://image.tmdb.org/t/p/w1280' + r.backdrop_path : null,
-      genres:[], len:'—', hue:hueFromString(title)
+      genres:[], len:'—', hue:hueFromString(title),
+      originCountry: (r.origin_country || [])[0] || r.production_countries?.[0]?.iso_3166_1 || null,
+      originalLanguage: r.original_language || null
     };
   },
   async tmdbDetail(id, type){
@@ -1382,40 +1705,20 @@ const API = {
     APICache.set(key, out); return out;
   },
 
-  async jikan(path){
-    await new Promise(r => setTimeout(r, 350));
-    const r = await fetch('https://api.jikan.moe/v4' + path);
-    if (!r.ok) throw new Error('Jikan: ' + r.status);
-    return r.json();
-  },
+  /* ── Anime: uses AniList (Jikan removed for reliability) ── */
   async animeTop(page = 1){
-    const key = 'jikan_top_' + page;
+    const key = 'anilist_anime_top_' + page;
     const c = APICache.get(key); if (c) return c;
-    const data = await this.jikan('/top/anime?page=' + page + '&limit=24');
-    const items = (data.data || []).map(a => this.normJikan(a));
-    APICache.set(key, items); return items;
+    const items = await AniListAPI.popular(page);
+    APICache.set(key, items);
+    return items;
   },
   async animeSearch(q){
-    const key = 'jikan_search_' + q.toLowerCase();
+    const key = 'anilist_anime_search_' + q.toLowerCase();
     const c = APICache.get(key); if (c) return c;
-    const data = await this.jikan('/anime?q=' + encodeURIComponent(q) + '&limit=20&sfw');
-    const items = (data.data || []).map(a => this.normJikan(a));
-    APICache.set(key, items); return items;
-  },
-  normJikan(a){
-    const title = a.title_english || a.title || 'Untitled';
-    return {
-      id:'jikan_'+a.mal_id, source:'jikan', sourceId:a.mal_id, type:'anime', title,
-      year: a.year || (a.aired?.from ? new Date(a.aired.from).getFullYear() : '—'),
-      rating: a.score || 0,
-      desc: a.synopsis || 'No description available.',
-      poster: a.images?.jpg?.large_image_url || a.images?.jpg?.image_url || null,
-      backdrop: a.trailer?.images?.maximum_image_url || null,
-      genres: [...(a.genres||[]), ...(a.themes||[])].map(g => g.name).slice(0, 6),
-      len: a.episodes ? `${a.episodes} eps` : '—',
-      episodes: a.episodes,
-      hue: hueFromString(title)
-    };
+    const items = await AniListAPI.search(q);
+    APICache.set(key, items);
+    return items;
   },
 
   async mangaTop(){
@@ -1436,14 +1739,14 @@ const API = {
   async novelsTop(page = 1){
     const key = 'ol_top_' + page;
     const c = APICache.get(key); if (c) return c;
-    const data = await (await fetch(`https://openlibrary.org/search.json?q=subject:fiction&sort=rating&limit=24&page=${page}`)).json();
+    const data = await (await fetchWithTimeout(`https://openlibrary.org/search.json?q=subject:fiction&sort=rating&limit=24&page=${page}`, {}, 6000)).json();
     const items = (data.docs || []).map(d => this.normOL(d));
     APICache.set(key, items); return items;
   },
   async novelSearch(q){
     const key = 'ol_search_' + q.toLowerCase();
     const c = APICache.get(key); if (c) return c;
-    const data = await (await fetch(`https://openlibrary.org/search.json?q=${encodeURIComponent(q)}&limit=20`)).json();
+    const data = await (await fetchWithTimeout(`https://openlibrary.org/search.json?q=${encodeURIComponent(q)}&limit=20`, {}, 6000)).json();
     const items = (data.docs || []).map(d => this.normOL(d));
     APICache.set(key, items); return items;
   },
@@ -1465,7 +1768,7 @@ const API = {
   },
 
   async gutendex(path){
-    const r = await fetch('https://gutendex.com' + path);
+    const r = await fetchWithTimeout('https://gutendex.com' + path, {}, 6000);
     if (!r.ok) throw new Error('Gutendex: ' + r.status);
     return r.json();
   },
@@ -1571,6 +1874,8 @@ function cardHTML(item, progress){
   const indStr = indicators.length ? ` <span style="margin-left:4px">${indicators.join(' ')}</span>` : '';
   let badgeClass = '', badgeText = t.label;
   if (live){ badgeClass = 'live'; badgeText = 'Live'; }
+  else if (item.type === 'movie' && isIndian(item)){ badgeClass = 'indian'; badgeText = '🇮🇳 Indian'; }
+  else if (item.type === 'tv' && isIndian(item)){ badgeClass = 'indian'; badgeText = '🇮🇳 Indian TV'; }
   else if (isHindi(item)){ badgeClass = 'hindi'; badgeText = '🇮🇳 Hindi'; }
   else if (isPlayable(item)){ badgeClass = 'playable'; badgeText = 'Playable'; }
   else if (item.type === 'movie'){ badgeClass = 'movie'; badgeText = 'Movie'; }
@@ -1623,7 +1928,7 @@ const state = {
   q:'', genre:'all', sort:'trending', mangaType:'all', myFilter:'all', sf:'all'
 };
 let currentPlayerItem = null;
-let watchlistFilter = 'all';   // 'all' | 'videofirst' | 'anime' | 'manga' | 'novel'
+let watchlistFilter = 'all';
 
 /* =========================================================
    LOAD CATEGORY
@@ -1647,7 +1952,9 @@ async function loadCategory(cat, page = 1){
   const labels = {
     all:'Trending Now', movie:'Popular Movies', tv:'Popular TV Shows',
     anime:'Top Anime', manga:'Manga · Manhwa · Manhua',
-    novel:'Novels (OpenLibrary + Gutenberg)', mine:'My Favorites'
+    novel:'Novels (OpenLibrary + Gutenberg)',
+    indian:'🇮🇳 Indian Movies & TV Shows',
+    mine:'My Favorites'
   };
   title.textContent = labels[cat] || 'Browse';
 
@@ -1705,23 +2012,54 @@ async function loadCategory(cat, page = 1){
     }
 
     if (cat === 'all'){
-      const [movies, animes, mangas] = await Promise.all([
+      const [movies, animes, mangas, indianM] = await Promise.all([
         API.tmdbMovies(page).catch(() => []),
         API.animeTop(page).catch(() => []),
-        API.mangaTop().catch(() => [])
+        API.mangaTop().catch(() => []),
+        API.tmdbIndianMovies(page).catch(() => [])
       ]);
       if (page === 1) items.push(...CATALOG.slice(0, 6));
-      const max = Math.max(movies.length, animes.length, mangas.length);
+      const max = Math.max(movies.length, animes.length, mangas.length, indianM.length);
       for (let i = 0; i < max; i++){
         if (movies[i]) items.push(movies[i]);
         if (animes[i]) items.push(animes[i]);
         if (mangas[i]) items.push(mangas[i]);
+        if (indianM[i]) items.push(indianM[i]);
+      }
+      if (!items.length){
+        console.warn('[NexusStream] All live APIs failed → using offline fallback.');
+        items = FALLBACK_CATALOG.slice();
+        showToast('📴 Offline mode — showing built-in catalog');
       }
     }
-    else if (cat === 'movie') items = await API.tmdbMovies(page);
-    else if (cat === 'tv')    items = await API.tmdbTV(page);
-    else if (cat === 'anime') items = await API.animeTop(page);
-    else if (cat === 'manga') items = await API.mangaTop();
+    else if (cat === 'movie'){
+      items = await API.tmdbMovies(page).catch(() => []);
+      if (!items.length) items = FALLBACK_CATALOG.filter(i => i.type === 'movie' && i.originCountry !== 'IN');
+    }
+    else if (cat === 'tv'){
+      items = await API.tmdbTV(page).catch(() => []);
+      if (!items.length) items = FALLBACK_CATALOG.filter(i => i.type === 'tv' && i.originCountry !== 'IN');
+    }
+    else if (cat === 'anime'){
+      /* Show fallback anime instantly so user never sees empty grid */
+      const fbAnime = FALLBACK_CATALOG.filter(i => i.type === 'anime');
+      if (page === 1 && fbAnime.length){
+        state.apiItems = fbAnime.slice();
+        renderGenreChips();
+        grid.innerHTML = fbAnime.map(i => cardHTML(i)).join('');
+        count.textContent = `${fbAnime.length} titles (loading live data…)`;
+        renderHero(fbAnime[0]);
+      }
+      /* Now try live AniList fetch — 6s timeout max */
+      items = await API.animeTop(page).catch(() => []);
+      if (!items.length){
+        items = fbAnime;
+        showToast('⚠ AniList unreachable — showing offline anime list');
+      }
+    }
+    else if (cat === 'manga'){
+      items = await API.mangaTop().catch(() => []);
+    }
     else if (cat === 'novel'){
       const [ol, gb] = await Promise.all([
         API.novelsTop(page).catch(() => []),
@@ -1732,6 +2070,18 @@ async function loadCategory(cat, page = 1){
         if (ol[i]) items.push(ol[i]);
         if (gb[i]) items.push(gb[i]);
       }
+    }
+    else if (cat === 'indian'){
+      const [movies, tvs] = await Promise.all([
+        API.tmdbIndianMovies(page).catch(() => []),
+        API.tmdbIndianTV(page).catch(() => [])
+      ]);
+      const max = Math.max(movies.length, tvs.length);
+      for (let i = 0; i < max; i++){
+        if (movies[i]) items.push(movies[i]);
+        if (tvs[i]) items.push(tvs[i]);
+      }
+      if (!items.length) items = FALLBACK_CATALOG.filter(i => i.originCountry === 'IN');
     }
 
     if (state.cat !== myCat) return;
@@ -1754,8 +2104,42 @@ async function loadCategory(cat, page = 1){
     if (page === 1) renderHero(filtered[0] || null);
   } catch (err){
     if (state.cat !== myCat) return;
-    console.error(err);
-    if (page === 1) grid.innerHTML = emptyState('Could not load content', err.message);
+    console.error('[NexusStream]', err);
+
+    const fb = FALLBACK_CATALOG.filter(i => {
+      if (cat === 'movie') return i.type === 'movie' && i.originCountry !== 'IN';
+      if (cat === 'tv')    return i.type === 'tv'    && i.originCountry !== 'IN';
+      if (cat === 'anime') return i.type === 'anime';
+      if (cat === 'indian')return i.originCountry === 'IN';
+      return true;
+    });
+
+    if (fb.length){
+      state.allLoadedItems = fb;
+      grid.innerHTML = fb.map(i => cardHTML(i)).join('');
+      count.textContent = `${fb.length} titles (offline)`;
+      renderHero(fb[0] || null);
+      showToast('📴 Offline mode — using built-in catalog');
+      return;
+    }
+
+    const isFile = location.protocol === 'file:';
+    const hint = isFile
+      ? 'Browsers block network calls from file:// URLs. Please run a local server — see instructions on screen.'
+      : `Network error: ${err.message}. Check your internet connection or ad-blocker.`;
+
+    if (page === 1){
+      grid.innerHTML = `
+        <div class="empty" style="grid-column:1/-1">
+          <span class="big">📡</span>
+          <strong>Could not load content</strong>
+          <p style="max-width:600px;margin:8px auto 16px">${esc(hint)}</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="btn accent" onclick="location.reload()">↻ Try again</button>
+            <button class="btn ghost" onclick="document.getElementById('settingsBtn').click()">⚙ Check sources</button>
+          </div>
+        </div>`;
+    }
     showToast('⚠ ' + err.message);
     count.textContent = '';
   }
@@ -1849,7 +2233,9 @@ function renderHero(item){
    DETAIL
    ========================================================= */
 function findItemById(id){
-  const found = state.allLoadedItems.find(i => i.id === id) || CATALOG.find(i => i.id === id);
+  const found = state.allLoadedItems.find(i => i.id === id)
+             || CATALOG.find(i => i.id === id)
+             || FALLBACK_CATALOG.find(i => i.id === id);
   if (found){ cacheSeenItem(found); return found; }
   return getCachedItem(id);
 }
@@ -1875,6 +2261,7 @@ async function openDetail(id){
         ${item.rating ? `<span>•</span><span class="star">★</span><span>${item.rating}</span>` : ''}
         ${extras.runtime ? `<span>•</span><span>${esc(extras.runtime)}</span>` : ''}
         <span class="chip">${t.label}</span>
+        ${isIndian(item) ? `<span class="chip" style="background:linear-gradient(135deg,#ff9933,#138808);color:#fff;border-color:transparent">🇮🇳 Indian</span>` : ''}
         ${item.source ? `<span class="chip" style="background:rgba(34,211,238,.15);border-color:rgba(34,211,238,.4)">${esc(item.source)}</span>` : ''}
       </div>
     </div>
@@ -1885,6 +2272,10 @@ async function openDetail(id){
       <div class="modal-actions">
         <button class="btn accent" data-play="${esc(item.id)}">${item.type === 'manga' || item.type === 'novel' ? '📖 Open' : '▶ Play'}</button>
         <button class="btn ghost" data-watch="${esc(item.id)}">${inList ? '✓ In My List' : '＋ My List'}</button>
+        ${item.type === 'anime' ? `
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:10px;background:rgba(236,72,153,.1);border:1px solid rgba(236,72,153,.3);font-size:12.5px;color:#ec4899;font-weight:600">
+            🌸 Sub / English Dub / Hindi Dub
+          </span>` : ''}
         ${(item.type === 'movie' || item.type === 'tv') && (item.sourceId || item.tmdbId) ? `
           <span style="display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:10px;background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);font-size:12.5px;color:var(--accent-2);font-weight:600">
             ${activeServer.flag} ${esc(activeServer.name)}
@@ -1926,7 +2317,129 @@ async function openPlayer(id){
 
   if (item.type === 'manga') return openMangaReader(item);
   if (item.type === 'novel') return openNovelReader(item);
+  if (item.type === 'anime') return openAnimePlayer(item);
   return openVideo(item);
+}
+
+/* =========================================================
+   ANIME PLAYER
+   ========================================================= */
+function openAnimePlayer(item){
+  const box = $('#playerContent');
+  const totalEps = parseInt(item.episodes, 10) || 12;
+  let ep = 1;
+  const slug = makeSlug(item.title);
+
+  const render = () => {
+    const servers = ANIME_SERVERS.filter(s => s.lang === currentAnimeLang);
+    let active = servers.find(s => s.id === currentAnimeServer);
+    if (!active && servers.length){
+      active = servers[0];
+      currentAnimeServer = active.id;
+      Store.set('nexus_anime_server', currentAnimeServer);
+    }
+    const url = active ? active.url(slug, ep) : null;
+
+    const langLabel = currentAnimeLang === 'sub' ? 'Sub (Original JP)'
+                    : currentAnimeLang === 'dub-en' ? 'English Dub'
+                    : 'Hindi Dub';
+
+    box.innerHTML = `<div class="player-shell">
+      <div class="anime-lang-tabs">
+        <button class="anime-lang-tab ${currentAnimeLang === 'sub' ? 'active' : ''}" data-anime-lang="sub">🇯🇵 Sub (Original)</button>
+        <button class="anime-lang-tab ${currentAnimeLang === 'dub-en' ? 'active' : ''}" data-anime-lang="dub-en">🇬🇧 English Dub</button>
+        <button class="anime-lang-tab ${currentAnimeLang === 'dub-hi' ? 'active' : ''}" data-anime-lang="dub-hi">🇮🇳 Hindi Dub</button>
+      </div>
+
+      <div class="video-stage" style="position:relative">
+        ${url
+          ? `<iframe id="streamIframe" src="${esc(url)}"
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture" allowfullscreen
+                    referrerpolicy="no-referrer"
+                    style="position:absolute;inset:0;width:100%;height:100%;border:0;z-index:1"></iframe>`
+          : `<div class="video-fallback" style="--h:${item.hue}">
+               <div>
+                 <div class="big-play">▶</div>
+                 <h2>No server for this language</h2>
+                 <p>Try another language or server</p>
+               </div>
+             </div>`}
+      </div>
+
+      <div class="player-meta">
+        <div>
+          <h3 class="pm-title">${esc(item.title)}</h3>
+          <p class="pm-sub">🌸 Anime • ${esc(item.year)} • Episode ${ep}/${totalEps}
+            <span style="color:var(--accent-2);margin-left:6px">· ${active ? active.flag + ' ' + esc(active.name) : '—'}</span>
+          </p>
+        </div>
+        <div class="pm-actions">
+          <button class="btn ghost sm" data-watch="${item.id}">${watchlist.has(item.id) ? '✓ In List' : '＋ My List'}</button>
+        </div>
+      </div>
+
+      <div class="ep-nav">
+        <button class="btn ghost sm" id="epPrev" ${ep <= 1 ? 'disabled style="opacity:.4"' : ''}>‹ Prev Ep</button>
+        <span style="font-size:12.5px;color:var(--muted)">Episode</span>
+        <input type="number" id="animeEpInput" value="${ep}" min="1" max="${totalEps}" class="ep-input">
+        <span style="font-size:12.5px;color:var(--muted)">/ ${totalEps}</span>
+        <button class="btn ghost sm" id="epNext" ${ep >= totalEps ? 'disabled style="opacity:.4"' : ''}>Next Ep ›</button>
+      </div>
+
+      <div class="stream-servers-wrap">
+        <div class="stream-servers-head">
+          <span>🔌 ${esc(langLabel)} Servers</span>
+          <span class="hint">Switch if one doesn't work</span>
+        </div>
+        <div class="stream-servers-list">
+          ${servers.map(s => `
+            <button class="stream-server-btn ${s.id === currentAnimeServer ? 'active' : ''}"
+                    data-anime-server="${s.id}">
+              <span class="flag">${s.flag}</span><span class="name">${esc(s.name)}</span>
+            </button>`).join('')}
+        </div>
+      </div>
+
+      <div class="source-note" style="margin-top:14px">
+        ⚠ <strong>Note:</strong> Anime streams use external players. If a server fails, try another or switch language.
+        <a href="https://aniwatchtv.to/search?keyword=${encodeURIComponent(item.title)}" target="_blank" rel="noopener" style="color:var(--accent-2);font-weight:600;margin-left:4px">Search on AniWatch ↗</a>
+      </div>
+    </div>`;
+
+    box.querySelectorAll('[data-anime-lang]').forEach(btn => {
+      btn.onclick = () => {
+        currentAnimeLang = btn.dataset.animeLang;
+        Store.set('nexus_anime_lang', currentAnimeLang);
+        const first = ANIME_SERVERS.find(s => s.lang === currentAnimeLang);
+        if (first){
+          currentAnimeServer = first.id;
+          Store.set('nexus_anime_server', currentAnimeServer);
+        }
+        showToast(`${btn.textContent.trim()} selected`);
+        render();
+      };
+    });
+
+    box.querySelectorAll('[data-anime-server]').forEach(btn => {
+      btn.onclick = () => {
+        currentAnimeServer = btn.dataset.animeServer;
+        Store.set('nexus_anime_server', currentAnimeServer);
+        render();
+      };
+    });
+
+    const prevBtn = box.querySelector('#epPrev');
+    const nextBtn = box.querySelector('#epNext');
+    const epInput = box.querySelector('#animeEpInput');
+    if (prevBtn) prevBtn.onclick = () => { if (ep > 1){ ep--; render(); } };
+    if (nextBtn) nextBtn.onclick = () => { if (ep < totalEps){ ep++; render(); } };
+    if (epInput) epInput.onchange = () => {
+      const v = Math.max(1, Math.min(totalEps, parseInt(epInput.value, 10) || 1));
+      ep = v; render();
+    };
+  };
+
+  render();
 }
 
 /* =========================================================
@@ -2093,7 +2606,7 @@ async function openNovelReader(item){
 }
 
 /* =========================================================
-   VIDEO PLAYER
+   VIDEO PLAYER (Movies & TV)
    ========================================================= */
 function openVideo(item){
   const box = $('#playerContent');
@@ -2273,7 +2786,6 @@ function renderWatchlist(){
 
   const allItems = [...watchlist].map(findItemById).filter(Boolean);
 
-  /* Count per slot */
   const counts = { videofirst:0, anime:0, manga:0, novel:0 };
   allItems.forEach(i => {
     if (i.type === 'movie' || i.type === 'tv') counts.videofirst++;
@@ -2282,7 +2794,6 @@ function renderWatchlist(){
     else if (i.type === 'novel') counts.novel++;
   });
 
-  /* Apply slot filter */
   let items = allItems;
   if (watchlistFilter === 'videofirst') items = allItems.filter(i => i.type === 'movie' || i.type === 'tv');
   else if (watchlistFilter === 'anime') items = allItems.filter(i => i.type === 'anime');
@@ -2578,6 +3089,7 @@ async function renderSearchResults(query){
   box.innerHTML = skeletonGrid(12);
   const tasks = [];
   if (state.sf === 'all' || state.sf === 'movie' || state.sf === 'tv') tasks.push(API.tmdbSearch(q).catch(() => []));
+  if (state.sf === 'all' || state.sf === 'indian') tasks.push(API.tmdbIndianMovies(1).catch(() => []));
   if (state.sf === 'all' || state.sf === 'anime') tasks.push(API.animeSearch(q).catch(() => []));
   if (state.sf === 'all' || state.sf === 'manga') tasks.push(API.mangaSearch(q).catch(() => []));
   if (state.sf === 'all' || state.sf === 'novel'){
@@ -2633,7 +3145,7 @@ function renderAdminDashboard(){
       <div class="admin-stat"><div class="lbl">My Titles</div><div class="val">${CATALOG.length}</div></div>
       <div class="admin-stat"><div class="lbl">▶ Playable</div><div class="val">${playable}</div></div>
       <div class="admin-stat"><div class="lbl">Users</div><div class="val">${Object.keys(users).length}</div></div>
-      <div class="admin-stat"><div class="lbl">🔌 Servers</div><div class="val">${STREAM_SERVERS.length + MANGA_SERVERS.length}</div></div>
+      <div class="admin-stat"><div class="lbl">🔌 Servers</div><div class="val">${STREAM_SERVERS.length + ANIME_SERVERS.length + MANGA_SERVERS.length}</div></div>
     </div>
     <div class="admin-section-title"><span>Content Breakdown</span></div>
     <div class="admin-stats">
@@ -2736,6 +3248,7 @@ function renderAdminSettings(){
       <h4 style="font-size:14.5px;font-weight:700;margin-bottom:12px">ℹ About</h4>
       <div style="font-size:13px;color:var(--muted);line-height:1.8">
         <div><strong style="color:var(--text)">Admin:</strong> ${ADMIN_NAME}</div>
+        <div><strong style="color:var(--text)">Anime servers:</strong> ${ANIME_SERVERS.length} (Sub / EN Dub / Hindi Dub)</div>
         <div><strong style="color:var(--text)">Manga source:</strong> MangaDex (via CORS proxy)</div>
         <div><strong style="color:var(--text)">TMDB key:</strong> ${CONFIG.tmdbReady ? '✓ baked in' : '⚠ not set'}</div>
       </div>
@@ -2820,6 +3333,19 @@ function renderServerPrefList(){
       <span class="name" style="font-size:12px">${esc(s.name)}</span>
     </button>`).join('');
 }
+function renderAnimeLangPrefList(){
+  const list = $('#animeLangPrefList'); if (!list) return;
+  const langs = [
+    { id:'sub', label:'🇯🇵 Sub (Original)' },
+    { id:'dub-en', label:'🇬🇧 English Dub' },
+    { id:'dub-hi', label:'🇮🇳 Hindi Dub' }
+  ];
+  list.innerHTML = langs.map(l => `
+    <button class="stream-server-btn ${currentAnimeLang === l.id ? 'active' : ''}"
+            data-pref-anime-lang="${l.id}" style="justify-content:flex-start;padding:10px 12px">
+      <span class="name" style="font-size:12px">${l.label}</span>
+    </button>`).join('');
+}
 function renderMangaServerPrefList(){
   const list = $('#mangaServerPrefList'); if (!list) return;
   list.innerHTML = MANGA_SERVERS.map(s => `
@@ -2852,6 +3378,7 @@ function openSettings(){
 
   updateSourceDots();
   renderServerPrefList();
+  renderAnimeLangPrefList();
   renderMangaServerPrefList();
   $('#settingsModal').classList.add('open');
 }
@@ -2873,8 +3400,8 @@ async function testSources(){
     try { await API.tmdb('/movie/popular', { page: 1 }); results.push('TMDB ✓'); }
     catch { results.push('TMDB ✗'); }
   } else results.push('TMDB (no key)');
-  try { await API.animeTop(1); results.push('Jikan ✓'); } catch { results.push('Jikan ✗'); }
-  try { await MangaAPI.popular(); results.push('AniList ✓'); } catch (e) { results.push('AniList ✗'); }
+  try { await API.animeTop(1); results.push('AniList ✓'); } catch { results.push('AniList ✗'); }
+  try { await MangaAPI.popular(); results.push('AniList Manga ✓'); } catch (e) { results.push('AniList Manga ✗'); }
   try { await API.novelsTop(1); results.push('OL ✓'); } catch { results.push('OL ✗'); }
   try { const g = await API.novelsGutenberg(1); results.push(g.length ? 'Gutenberg ✓' : 'Gutenberg ~'); } catch { results.push('Gutenberg ✗'); }
   showToast(results.join(' · '));
@@ -3001,6 +3528,16 @@ document.addEventListener('click', async e => {
     currentStreamServer = id; Store.set('nexus_stream_server', id);
     document.querySelectorAll('[data-pref-server]').forEach(b => b.classList.toggle('active', b.dataset.prefServer === id));
     showToast(`Default: ${STREAM_SERVERS.find(x => x.id === id).name}`);
+    return;
+  }
+  const prefAnimeLang = e.target.closest('[data-pref-anime-lang]');
+  if (prefAnimeLang){
+    const id = prefAnimeLang.dataset.prefAnimeLang;
+    currentAnimeLang = id; Store.set('nexus_anime_lang', id);
+    const first = ANIME_SERVERS.find(s => s.lang === id);
+    if (first){ currentAnimeServer = first.id; Store.set('nexus_anime_server', first.id); }
+    document.querySelectorAll('[data-pref-anime-lang]').forEach(b => b.classList.toggle('active', b.dataset.prefAnimeLang === id));
+    showToast(`Default anime: ${id === 'sub' ? '🇯🇵 Sub' : id === 'dub-en' ? '🇬🇧 English Dub' : '🇮🇳 Hindi Dub'}`);
     return;
   }
   const prefMangaBtn = e.target.closest('[data-pref-manga-server]');
