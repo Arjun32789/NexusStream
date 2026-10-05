@@ -98,6 +98,46 @@ a{color:inherit;text-decoration:none}
 .g-chip.active{background:linear-gradient(135deg,var(--accent),rgba(124,92,255,.6));color:#fff;border-color:transparent;box-shadow:0 6px 18px -8px var(--accent)}
 .sort-select{background:var(--panel);color:var(--text);border:1px solid var(--line);padding:7px 12px;border-radius:20px;font-size:13px;outline:none;cursor:pointer}
 
+/* ── MY FAVORITES TABS (matches screenshot) ── */
+.fav-tabs {
+  display: flex;
+  gap: 6px;
+  background: #12141f;
+  padding: 6px;
+  border-radius: 30px;
+  margin-bottom: 24px;
+  overflow-x: auto;
+  width: max-content;
+  max-width: 100%;
+  border: 1px solid var(--line);
+  scrollbar-width: none;
+}
+.fav-tabs::-webkit-scrollbar { display: none; }
+.fav-tab {
+  padding: 10px 20px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+.fav-tab.active {
+  background: #fff;
+  color: #07080d;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+.fav-tab:hover:not(.active) {
+  color: var(--text);
+  background: rgba(255,255,255,0.06);
+}
+
 .grid{display:grid;gap:20px 16px;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));padding-bottom:30px}
 .card{cursor:pointer;animation:rise .4s ease both}
 .card .poster{position:relative;aspect-ratio:2/3;border-radius:var(--radius);overflow:hidden;background:radial-gradient(120% 90% at 20% 0%,hsl(var(--h) 72% 34%),transparent 62%),linear-gradient(165deg,hsl(var(--h) 60% 18%),hsl(calc(var(--h) + 55) 55% 9%) 55%,#05060a);border:1px solid var(--line);display:flex;flex-direction:column;justify-content:flex-end;padding:14px;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s}
@@ -403,13 +443,23 @@ a{color:inherit;text-decoration:none}
 
 .watchlist-toggle{position:fixed;bottom:100px;right:20px;z-index:80;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:grid;place-items:center;font-size:22px;box-shadow:0 10px 30px rgba(124,92,255,.5);cursor:pointer;transition:.25s}
 .watchlist-toggle:hover{transform:scale(1.1)}
-.watchlist-panel{position:fixed;bottom:166px;right:20px;z-index:80;width:320px;max-height:440px;overflow-y:auto;background:rgba(18,20,31,.97);border:1px solid var(--line-2);border-radius:16px;padding:16px;display:none;backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(0,0,0,.8)}
+.watchlist-panel{position:fixed;bottom:166px;right:20px;z-index:80;width:360px;max-height:520px;overflow-y:auto;background:rgba(18,20,31,.97);border:1px solid var(--line-2);border-radius:16px;padding:16px;display:none;backdrop-filter:blur(18px);box-shadow:0 20px 60px rgba(0,0,0,.8)}
 .watchlist-panel.open{display:block;animation:rise .2s ease both}
 .watchlist-panel h4{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.wl-tabs{display:flex;gap:5px;flex-wrap:wrap;margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.wl-tab{padding:5px 10px;border-radius:8px;font-size:11px;font-weight:700;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--muted);transition:.15s;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.wl-tab:hover{color:var(--text);border-color:var(--line-2);background:rgba(255,255,255,.08)}
+.wl-tab.active{background:linear-gradient(135deg,var(--accent),rgba(124,92,255,.6));color:#fff;border-color:transparent;box-shadow:0 4px 12px -6px var(--accent)}
+.wl-tab .cnt{opacity:.75;font-size:10px;font-weight:800;background:rgba(0,0,0,.28);padding:1px 6px;border-radius:20px}
+.wl-tab.active .cnt{background:rgba(0,0,0,.35);opacity:1}
+.wl-list{display:flex;flex-direction:column;gap:2px}
+.wl-empty{text-align:center;padding:22px 12px;color:var(--muted);font-size:12.5px;border:1px dashed var(--line-2);border-radius:10px;background:rgba(255,255,255,.02)}
+.wl-empty .big{display:block;font-size:24px;margin-bottom:6px;opacity:.5}
 .watchlist-item{display:flex;gap:10px;padding:8px;border-radius:9px;cursor:pointer;transition:.15s;align-items:center}
 .watchlist-item:hover{background:rgba(255,255,255,.06)}
 .watchlist-item .wl-dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2);flex-shrink:0}
 .watchlist-item .wl-title{font-size:13px;font-weight:500;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.watchlist-item .wl-icon{font-size:14px;opacity:.55;flex-shrink:0}
 
 footer{margin-top:50px;padding:40px 20px 80px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:26px;justify-content:space-between;color:var(--muted);font-size:13px}
 footer .cols{display:flex;gap:56px;flex-wrap:wrap}
@@ -491,12 +541,26 @@ body:not(.admin-mode) #adminEditModal{display:none !important}
 <main>
   <section class="hero" id="hero"></section>
   <section class="section">
-    <div class="section-head">
+    <div class="section-head" id="defaultHeader">
       <h2 id="browseTitle">Trending Now</h2>
       <span class="count" id="resultCount"></span>
       <button class="refresh-btn" id="refreshBtn">↻ Refresh</button>
     </div>
-    <div class="filter-bar">
+
+    <div class="section-head" id="favoritesHeader" style="display:none; margin-bottom:20px; align-items:flex-start;">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <div style="width:48px; height:48px; border-radius:14px; background:linear-gradient(135deg, #e53e3e, #c53030); display:grid; place-items:center; color:#fff; font-size:24px; box-shadow:0 6px 16px rgba(229,62,62,0.4);">
+          ❤️
+        </div>
+        <div>
+          <h2 style="font-size:24px; font-weight:800; letter-spacing:-.5px;">My Favorites</h2>
+          <p style="font-size:13.5px; color:var(--muted); margin-top:4px;">All your favorite content in one place</p>
+        </div>
+      </div>
+      <span class="count" id="favResultCount" style="margin-left:auto; margin-top:8px;"></span>
+    </div>
+
+    <div class="filter-bar" id="filterBar">
       <div class="genre-chips" id="genreChips"></div>
       <select class="sort-select" id="sortSelect">
         <option value="trending">Sort: Trending</option>
@@ -842,7 +906,6 @@ const MANGA_SERVERS = [
 let currentMangaServer = Store.get('nexus_manga_server', 'mangadex');
 const mangaServer = () => MANGA_SERVERS.find(s => s.id === currentMangaServer) || MANGA_SERVERS[0];
 
-/* Multiple proxies — tries one by one until success */
 const MANGA_PROXIES = [
   u => 'https://corsproxy.io/?' + encodeURIComponent(u),
   u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
@@ -864,7 +927,6 @@ async function proxyJson(url){
 }
 
 const MangaAPI = {
-  /* ---------- AniList: search & popular (metadata) ---------- */
   async _graphql(query, variables = {}){
     const r = await fetch('https://graphql.anilist.co', {
       method: 'POST',
@@ -939,7 +1001,6 @@ const MangaAPI = {
     return (data.Page?.media || []).map(m => this.norm(m));
   },
 
-  /* ---------- MangaDex: chapters & pages (reading) ---------- */
   async _findMangaDexId(title){
     const key = 'mangadex_title_' + title.toLowerCase();
     const cached = APICache.get(key); if (cached) return cached;
@@ -954,7 +1015,6 @@ const MangaAPI = {
   },
 
   async getChapters(item){
-    // Find MangaDex ID by matching title
     const mdId = await this._findMangaDexId(item.title);
 
     const key = 'mangadex_ch_' + mdId;
@@ -985,13 +1045,11 @@ const MangaAPI = {
   },
 
   async getPages(item, chapterId){
-    // Get at-home server URL via proxy
     const url = `https://api.mangadex.org/at-home/server/${chapterId}`;
     const data = await proxyJson(url);
     const base = data.baseUrl;
     const hash = data.chapter.hash;
     const files = data.chapter.data || [];
-    // Image URLs — MangaDex CDN allows hotlinking for images (no CORS needed for <img>)
     return files.map(f => `${base}/data/${hash}/${f}`);
   }
 };
@@ -1144,6 +1202,31 @@ const CATALOG_KEY = 'nexus_catalog_v4';
 let CATALOG = (() => { try { const r = Store.get(CATALOG_KEY); if (!r) return []; const a = JSON.parse(r); return Array.isArray(a) ? a : []; } catch { return []; } })();
 function saveCatalog(){ try { Store.set(CATALOG_KEY, JSON.stringify(CATALOG)); } catch {} }
 function resetCatalog(){ Store.remove(CATALOG_KEY); CATALOG = []; }
+
+/* =========================================================
+   SEEN-ITEMS CACHE
+   ========================================================= */
+const SEEN_KEY = 'nexus_seen_items_v1';
+function cacheSeenItem(item){
+  if (!item || !item.id) return;
+  try {
+    const seen = JSON.parse(Store.get(SEEN_KEY) || '{}');
+    seen[item.id] = { ...item, _cachedAt: Date.now() };
+    const keys = Object.keys(seen);
+    if (keys.length > 600){
+      const sorted = keys.map(k => [k, seen[k]._cachedAt || 0]).sort((a,b) => b[1] - a[1]);
+      const keep = {};
+      sorted.slice(0, 500).forEach(([k]) => { keep[k] = seen[k]; });
+      Store.set(SEEN_KEY, JSON.stringify(keep));
+    } else {
+      Store.set(SEEN_KEY, JSON.stringify(seen));
+    }
+  } catch {}
+}
+function getCachedItem(id){
+  try { const seen = JSON.parse(Store.get(SEEN_KEY) || '{}'); return seen[id] || null; }
+  catch { return null; }
+}
 
 /* =========================================================
    CONFIG + TMDB KEY
@@ -1482,6 +1565,10 @@ function cardHTML(item, progress){
   const t = typeOf(item);
   const live = item.type === 'live';
   const meta = live ? item.len : `${item.year} <span class="dot">•</span> <span class="star">★</span> ${item.rating || '—'}`;
+  const indicators = [];
+  if (item._isFav) indicators.push('❤️');
+  if (item._inHistory) indicators.push('🕒');
+  const indStr = indicators.length ? ` <span style="margin-left:4px">${indicators.join(' ')}</span>` : '';
   let badgeClass = '', badgeText = t.label;
   if (live){ badgeClass = 'live'; badgeText = 'Live'; }
   else if (isHindi(item)){ badgeClass = 'hindi'; badgeText = '🇮🇳 Hindi'; }
@@ -1513,7 +1600,7 @@ function cardHTML(item, progress){
         ${item.rating ? `<span class="badge rating">★ ${item.rating}</span>` : ''}
         <span class="poster-glyph">${t.icon}</span>
         <div class="poster-title">${esc(item.title)}</div>
-        <div class="poster-sub">${meta}</div>
+        <div class="poster-sub">${meta}${indStr}</div>
         ${progress != null ? `<div class="progress-track"><i style="width:${progress}%"></i></div>` : ''}
       </div>
       <div class="card-info">
@@ -1533,9 +1620,10 @@ function emptyState(title, sub){
 const state = {
   cat:'all', page:1,
   apiItems:[], allLoadedItems:[],
-  q:'', genre:'all', sort:'trending', mangaType:'all', sf:'all'
+  q:'', genre:'all', sort:'trending', mangaType:'all', myFilter:'all', sf:'all'
 };
 let currentPlayerItem = null;
+let watchlistFilter = 'all';   // 'all' | 'videofirst' | 'anime' | 'manga' | 'novel'
 
 /* =========================================================
    LOAD CATEGORY
@@ -1543,12 +1631,23 @@ let currentPlayerItem = null;
 async function loadCategory(cat, page = 1){
   const grid = $('#grid'), title = $('#browseTitle'), count = $('#resultCount');
   const myCat = cat;
+
+  if (cat === 'mine') {
+    $('#defaultHeader').style.display = 'none';
+    $('#favoritesHeader').style.display = 'flex';
+    $('#sortSelect').style.display = 'none';
+  } else {
+    $('#defaultHeader').style.display = 'flex';
+    $('#favoritesHeader').style.display = 'none';
+    $('#sortSelect').style.display = 'block';
+  }
+
   if (page === 1){ grid.innerHTML = skeletonGrid(12); count.textContent = 'Loading…'; }
 
   const labels = {
     all:'Trending Now', movie:'Popular Movies', tv:'Popular TV Shows',
     anime:'Top Anime', manga:'Manga · Manhwa · Manhua',
-    novel:'Novels (OpenLibrary + Gutenberg)', mine:'My Library'
+    novel:'Novels (OpenLibrary + Gutenberg)', mine:'My Favorites'
   };
   title.textContent = labels[cat] || 'Browse';
 
@@ -1556,9 +1655,50 @@ async function loadCategory(cat, page = 1){
     let items = [];
 
     if (cat === 'mine'){
-      items = sortItems(CATALOG.slice());
-      grid.innerHTML = items.length ? items.map(i => cardHTML(i)).join('') : emptyState('Your library is empty', 'Login as admin to add your first title.');
-      count.textContent = `${items.length} titles`;
+      renderGenreChips();
+
+      const history = loadHistory();
+      const historyIds = new Set(history.map(h => h.id));
+
+      const seenIds = new Set();
+      const merged = [];
+      const addItem = (item) => {
+        if (!item || !item.id || seenIds.has(item.id)) return;
+        seenIds.add(item.id);
+        merged.push({
+          ...item,
+          _isFav: watchlist.has(item.id),
+          _inHistory: historyIds.has(item.id)
+        });
+      };
+
+      [...watchlist].map(id => findItemById(id)).filter(Boolean).forEach(addItem);
+      history.map(h => findItemById(h.id)).filter(Boolean).forEach(addItem);
+      CATALOG.forEach(addItem);
+
+      if (!merged.length){
+        grid.innerHTML = emptyState('Nothing here yet', 'Add favorites, watch something, or add titles from the Admin Panel.');
+        $('#favResultCount').textContent = '0 items';
+        state.allLoadedItems = [];
+        renderHero(null);
+        return;
+      }
+
+      let filtered = merged;
+      if (state.myFilter === 'videofirst')      filtered = merged.filter(i => i.type === 'movie' || i.type === 'tv');
+      else if (state.myFilter === 'anime')      filtered = merged.filter(i => i.type === 'anime');
+      else if (state.myFilter === 'manga')      filtered = merged.filter(i => i.type === 'manga');
+      else if (state.myFilter === 'novel')      filtered = merged.filter(i => i.type === 'novel');
+
+      items = sortItems(filtered);
+      grid.innerHTML = items.length
+        ? items.map(i => cardHTML(i)).join('')
+        : emptyState('Nothing in this section yet', 'Try another tab or add items to your list.');
+
+      const tabFav  = items.filter(i => i._isFav).length;
+      const tabHist = items.filter(i => i._inHistory).length;
+      $('#favResultCount').textContent = `${items.length} items · ❤️ ${tabFav} · 🕒 ${tabHist}`;
+
       state.allLoadedItems = items.slice();
       renderHero(items[0] || null);
       return;
@@ -1597,6 +1737,7 @@ async function loadCategory(cat, page = 1){
     if (state.cat !== myCat) return;
 
     state.apiItems = items.slice();
+    renderGenreChips();
     const filtered = sortItems(items.filter(baseFilter));
 
     if (page === 1){
@@ -1654,6 +1795,20 @@ function availableGenres(){
 }
 function renderGenreChips(){
   const box = $('#genreChips'); if (!box) return;
+
+  if (state.cat === 'mine'){
+    box.className = 'fav-tabs';
+    const mk = (v,l,icon) => `<button class="fav-tab ${state.myFilter === v ? 'active' : ''}" data-my-filter="${v}"><span>${icon}</span> ${l}</button>`;
+    box.innerHTML =
+      mk('all','All','📂') +
+      mk('videofirst','Movies & TV','🎬') +
+      mk('anime','Anime','🌸') +
+      mk('manga','Manga','📖') +
+      mk('novel','Novels','📕');
+    return;
+  }
+
+  box.className = 'genre-chips';
   if (state.cat === 'manga'){
     const mk = (v,l) => `<button class="g-chip ${state.mangaType === v ? 'active' : ''}" data-manga-type="${v}">${l}</button>`;
     box.innerHTML = mk('all','All') + mk('manga','📖 Manga') + mk('manhwa','🇰🇷 Manhwa') + mk('manhua','🇨🇳 Manhua');
@@ -1694,7 +1849,9 @@ function renderHero(item){
    DETAIL
    ========================================================= */
 function findItemById(id){
-  return state.allLoadedItems.find(i => i.id === id) || CATALOG.find(i => i.id === id) || null;
+  const found = state.allLoadedItems.find(i => i.id === id) || CATALOG.find(i => i.id === id);
+  if (found){ cacheSeenItem(found); return found; }
+  return getCachedItem(id);
 }
 async function openDetail(id){
   const item = findItemById(id); if (!item) return;
@@ -2109,14 +2266,63 @@ function toggleWatch(id){
   else { watchlist.add(id); showToast('Added to My List ✓'); }
   saveWatchlist(watchlist); renderWatchlist();
   if ($('#modal').classList.contains('open')) openDetail(id);
+  if (state.cat === 'mine') loadCategory('mine', 1);
 }
 function renderWatchlist(){
   const panel = $('.watchlist-panel'); if (!panel) return;
-  const items = [...watchlist].map(findItemById).filter(Boolean);
-  panel.innerHTML = `<h4><span>My Watch List (${items.length})</span></h4>
-    ${items.length
-      ? items.map(i => `<div class="watchlist-item" data-id="${esc(i.id)}"><span class="wl-dot"></span><span class="wl-title">${esc(i.title)}</span></div>`).join('')
-      : '<p style="font-size:13px;color:var(--muted)">Nothing saved yet.</p>'}`;
+
+  const allItems = [...watchlist].map(findItemById).filter(Boolean);
+
+  /* Count per slot */
+  const counts = { videofirst:0, anime:0, manga:0, novel:0 };
+  allItems.forEach(i => {
+    if (i.type === 'movie' || i.type === 'tv') counts.videofirst++;
+    else if (i.type === 'anime') counts.anime++;
+    else if (i.type === 'manga') counts.manga++;
+    else if (i.type === 'novel') counts.novel++;
+  });
+
+  /* Apply slot filter */
+  let items = allItems;
+  if (watchlistFilter === 'videofirst') items = allItems.filter(i => i.type === 'movie' || i.type === 'tv');
+  else if (watchlistFilter === 'anime') items = allItems.filter(i => i.type === 'anime');
+  else if (watchlistFilter === 'manga') items = allItems.filter(i => i.type === 'manga');
+  else if (watchlistFilter === 'novel') items = allItems.filter(i => i.type === 'novel');
+
+  panel.innerHTML = `
+    <h4>
+      <span>My Watch List (${allItems.length})</span>
+      <span style="font-size:10.5px;color:var(--muted);font-weight:500">${items.length} shown</span>
+    </h4>
+    <div class="wl-tabs">
+      <button class="wl-tab ${watchlistFilter === 'all' ? 'active' : ''}" data-wl-filter="all">
+        All <span class="cnt">${allItems.length}</span>
+      </button>
+      <button class="wl-tab ${watchlistFilter === 'videofirst' ? 'active' : ''}" data-wl-filter="videofirst">
+        🎬 Movies &amp; TV <span class="cnt">${counts.videofirst}</span>
+      </button>
+      <button class="wl-tab ${watchlistFilter === 'anime' ? 'active' : ''}" data-wl-filter="anime">
+        🌸 Anime <span class="cnt">${counts.anime}</span>
+      </button>
+      <button class="wl-tab ${watchlistFilter === 'manga' ? 'active' : ''}" data-wl-filter="manga">
+        📖 Manga <span class="cnt">${counts.manga}</span>
+      </button>
+      <button class="wl-tab ${watchlistFilter === 'novel' ? 'active' : ''}" data-wl-filter="novel">
+        📕 Novels <span class="cnt">${counts.novel}</span>
+      </button>
+    </div>
+    <div class="wl-list">
+      ${items.length
+        ? items.map(i => {
+            const t = typeOf(i);
+            return `<div class="watchlist-item" data-id="${esc(i.id)}">
+              <span class="wl-dot" style="background:hsl(${i.hue || 200} 70% 55%)"></span>
+              <span class="wl-title">${esc(i.title)}</span>
+              <span class="wl-icon" title="${esc(t.label)}">${t.icon}</span>
+            </div>`;
+          }).join('')
+        : `<div class="wl-empty"><span class="big">${allItems.length ? '📭' : '📋'}</span>${allItems.length ? 'Nothing in this slot yet.' : 'Nothing saved yet.'}</div>`}
+    </div>`;
 }
 function toggleWatchlistPanel(force){
   let panel = $('.watchlist-panel');
@@ -2684,8 +2890,9 @@ document.addEventListener('click', async e => {
     const cat = navBtn.dataset.cat;
     $$('.nav button').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
     $$('.bn-item').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
-    state.cat = cat; state.genre = 'all'; state.mangaType = 'all'; state.page = 1;
+    state.cat = cat; state.genre = 'all'; state.mangaType = 'all'; state.myFilter = 'all'; state.page = 1;
     state.allLoadedItems = [];
+    renderGenreChips();
     loadCategory(cat, 1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return;
@@ -2696,6 +2903,14 @@ document.addEventListener('click', async e => {
     state.mangaType = mtChip.dataset.mangaType;
     renderGenreChips();
     loadCategory(state.cat, 1);
+    return;
+  }
+
+  const myChip = e.target.closest('[data-my-filter]');
+  if (myChip){
+    state.myFilter = myChip.dataset.myFilter;
+    renderGenreChips();
+    loadCategory('mine', 1);
     return;
   }
 
@@ -2838,6 +3053,15 @@ document.addEventListener('click', async e => {
 
   const wl = e.target.closest('[data-watch]');
   if (wl){ if (!currentUser){ openAuth('signup'); return; } toggleWatch(wl.dataset.watch); return; }
+
+  const wlTab = e.target.closest('[data-wl-filter]');
+  if (wlTab){
+    e.stopPropagation();
+    watchlistFilter = wlTab.dataset.wlFilter;
+    renderWatchlist();
+    return;
+  }
+
   const wlItem = e.target.closest('.watchlist-item');
   if (wlItem){ openDetail(wlItem.dataset.id); toggleWatchlistPanel(false); return; }
 
