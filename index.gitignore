@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Netlify
+.netlify/
+
+# Build output
+dist/
+.cache/
